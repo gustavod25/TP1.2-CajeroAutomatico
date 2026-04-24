@@ -34,8 +34,23 @@ public class Transaccion {
         this.descripcion = descripcion;
     }
 
+    public Transaccion(String descripcion, double monto) {
+        this.descripcion = descripcion;
+        this.monto = monto;
+        this.fechaHora = LocalDateTime.now();
+    }
 
+    public Transaccion(TipoTransaccion tipo, double monto, LocalDateTime fechaHora, String descripcion) {
+        this.tipo = tipo;
+        this.monto = monto;
+        this.fechaHora = fechaHora;
+        this.descripcion = descripcion;
+    }
 
+    @Override
+    public String toString() {
+        return tipo + " - " + monto + " - " + fechaHora + " - " + descripcion;
+    }
 
     
 

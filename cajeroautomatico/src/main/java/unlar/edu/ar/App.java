@@ -1,13 +1,20 @@
 package unlar.edu.ar;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import java.util.ArrayList;
+
+import unlar.edu.ar.model.CuentaBancaria;
+import unlar.edu.ar.ui.Interfaz;
+
+public class App {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+
+        Interfaz ui = new Interfaz();
+
+        CuentaBancaria cuenta1 = new CuentaBancaria("Messi", "123", 10000.00, true, new ArrayList<>());
+
+        ui.Iniciar(cuenta1);
+
     }
 }

@@ -3,7 +3,7 @@ package unlar.edu.ar.model;
 import java.util.*;
 
 public class CuentaBancaria {
-    private String numeroCuenta;
+    private String pin;
     private double saldo;
     private String titular;
     private boolean activa;
@@ -12,21 +12,21 @@ public class CuentaBancaria {
     public CuentaBancaria() {
     }
 
-    public CuentaBancaria(String numeroCuenta, double saldo, String titular, boolean activa,
+    public CuentaBancaria(String titular, String pin, double saldo, boolean activa,
             List<String> historialTransacciones) {
-        this.numeroCuenta = numeroCuenta;
-        this.saldo = saldo;
         this.titular = titular;
+        this.pin = pin;
+        this.saldo = saldo;
         this.activa = activa;
         this.historialTransacciones = historialTransacciones;
     }
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
+    public String getPin() {
+        return pin;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public double getSaldo() {
