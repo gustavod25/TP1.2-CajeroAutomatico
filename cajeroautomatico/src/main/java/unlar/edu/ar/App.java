@@ -12,7 +12,7 @@ public class App {
 
         Interfaz ui = new Interfaz();
 
-        CuentaBancaria cuenta1 = new CuentaBancaria("Messi", "123", 10000.00, true, new ArrayList<>());
+        CuentaBancaria cuenta1 = new CuentaBancaria("123456789", "Messi", "123", 10000.00, true, new ArrayList<>());
 
         ui.Iniciar(cuenta1);
 

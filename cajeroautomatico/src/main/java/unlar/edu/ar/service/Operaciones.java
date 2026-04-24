@@ -1,8 +1,6 @@
 package unlar.edu.ar.service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.function.ToDoubleBiFunction;
 
 import unlar.edu.ar.exception.*;
 import unlar.edu.ar.model.*;
@@ -43,7 +41,6 @@ public class Operaciones {
         cuenta.getHistorialTransacciones().add(transaccion.toString());
         System.out.println("Extracción exitosa. Nuevo saldo: " + cuenta.getSaldo());
     }
-    }
 
     //
     public void transferencia(CuentaBancaria cuentaOrigen, CuentaBancaria cuentaDestino, double monto) {
@@ -66,7 +63,4 @@ public class Operaciones {
         cuentaDestino.getHistorialTransacciones().add(transaccionDestino.toString());
         System.out.println("Transferencia exitosa.");
     }
-
-}
-
 }
