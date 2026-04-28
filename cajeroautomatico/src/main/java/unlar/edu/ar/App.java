@@ -1,6 +1,7 @@
 package unlar.edu.ar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import unlar.edu.ar.model.CuentaBancaria;
 import unlar.edu.ar.service.Operaciones;
@@ -23,25 +24,30 @@ public class App {
         try {
             service.depositar(cuenta1, 5000.00);
             service.extraccion(cuenta3, 2000.00);
-            System.out.println("Saldo cuenta2: " + cuenta2.getSaldo());
             service.extraccion(cuenta2, 1000.00);
             service.depositar(cuenta2, 3000.00);
             service.transferencia(cuenta1, cuenta2, 5000.00);
             service.extraccion(cuenta3, 2000.00);
-            System.out.println("Saldo cuenta1: " + cuenta1.getSaldo());
             service.extraccion(cuenta1, 2000.00);
             service.transferencia(cuenta2, cuenta3, 2000.00);
-            System.out.println("Saldo cuenta3: " + cuenta3.getSaldo());
             service.depositar(cuenta1, 5000.00);
-            System.out.println("Saldo cuenta1: " + cuenta1.getSaldo());
             service.depositar(cuenta2, 5000.00);
-            System.out.println("Saldo cuenta3: " + cuenta3.getSaldo());
+            service.transferencia(cuenta3, cuenta2, 2000.00);
+            service.extraccion(cuenta1, 3000.00);
+            service.depositar(cuenta1, 9000.00);
+            service.extraccion(cuenta2, 4000.00);
+            service.transferencia(cuenta1, cuenta3, 3000.00);
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-        ui.Iniciar(cuenta3);
+        List<CuentaBancaria> cuentas = new ArrayList<>();
+        cuentas.add(cuenta1);
+        cuentas.add(cuenta2);
+        cuentas.add(cuenta3);
+
+        ui.Iniciar(cuenta1, cuentas);
 
     }
 }

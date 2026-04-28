@@ -18,9 +18,10 @@ public class Operaciones {
             throw new IllegalArgumentException("El monto debe ser positivo.");
         }
         cuenta.setSaldo(cuenta.getSaldo() + monto);
-        Transaccion transaccion = new Transaccion("Depósito", monto);
-        cuenta.getHistorialTransacciones().add(transaccion.toString());
-        System.out.println("Depósito exitoso. Nuevo saldo: " + cuenta.getSaldo());
+        Transaccion transaccion = new Transaccion(TipoTransaccion.DEPOSITO, monto, LocalDateTime.now(), "Deposito");
+        transaccion.setSaldoResultado(cuenta.getSaldo());
+        cuenta.getHistorialTransacciones().add(transaccion);
+        System.out.println("Tu Nuevo saldo es de : $" + cuenta.getSaldo());
     }
 
     public void extraccion(CuentaBancaria cuenta, double monto) {
@@ -37,9 +38,10 @@ public class Operaciones {
             throw new SaldoInsuficienteException("Saldo insuficiente.");
         }
         cuenta.setSaldo(cuenta.getSaldo() - monto);
-        Transaccion transaccion = new Transaccion("Extracción", -monto);
-        cuenta.getHistorialTransacciones().add(transaccion.toString());
-        System.out.println("Extracción exitosa. Nuevo saldo: " + cuenta.getSaldo());
+        Transaccion transaccion = new Transaccion(TipoTransaccion.EXTRACCION, monto, LocalDateTime.now(), "Extraccion");
+        transaccion.setSaldoResultado(cuenta.getSaldo());
+        cuenta.getHistorialTransacciones().add(transaccion);
+        System.out.println("Tu Nuevo saldo es de : $" + cuenta.getSaldo());
     }
 
     //
@@ -55,12 +57,14 @@ public class Operaciones {
         }
         cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - monto);
         cuentaDestino.setSaldo(cuentaDestino.getSaldo() + monto);
-        Transaccion transaccionOrigen = new Transaccion(TipoTransaccion.TRANSFERENCIA, -monto, LocalDateTime.now(),
+        Transaccion transaccionOrigen = new Transaccion(TipoTransaccion.TRANSFERENCIA, monto, LocalDateTime.now(),
                 "Transferencia a " + cuentaDestino.getTitular());
+        transaccionOrigen.setSaldoResultado(cuentaOrigen.getSaldo());
         Transaccion transaccionDestino = new Transaccion(TipoTransaccion.TRANSFERENCIA, monto, LocalDateTime.now(),
                 "Transferencia desde " + cuentaOrigen.getTitular());
-        cuentaOrigen.getHistorialTransacciones().add(transaccionOrigen.toString());
-        cuentaDestino.getHistorialTransacciones().add(transaccionDestino.toString());
+        transaccionDestino.setSaldoResultado(cuentaDestino.getSaldo());
+        cuentaOrigen.getHistorialTransacciones().add(transaccionOrigen);
+        cuentaDestino.getHistorialTransacciones().add(transaccionDestino);
         System.out.println("Transferencia exitosa.");
     }
 }

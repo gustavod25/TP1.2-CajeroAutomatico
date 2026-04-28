@@ -8,14 +8,14 @@ public class CuentaBancaria {
     private double saldo;
     private String titular;
     private boolean activa;
-    private List<String> historialTransacciones = new ArrayList<>();
+    private List<Transaccion> historialTransacciones = new ArrayList<>();
 
     public CuentaBancaria() {
         this.numeroCuenta = "";
     }
 
     public CuentaBancaria(String numeroCuenta, String titular, String pin, double saldo, boolean activa,
-            List<String> historialTransacciones) {
+            List<Transaccion> historialTransacciones) {
         this.numeroCuenta = numeroCuenta;
         this.titular = titular;
         this.pin = pin;
@@ -60,11 +60,11 @@ public class CuentaBancaria {
         this.activa = activa;
     }
 
-    public List<String> getHistorialTransacciones() {
+    public List<Transaccion> getHistorialTransacciones() {
         return historialTransacciones;
     }
 
-    public void setHistorialTransacciones(List<String> historialTransacciones) {
+    public void setHistorialTransacciones(List<Transaccion> historialTransacciones) {
         this.historialTransacciones = historialTransacciones;
     }
 

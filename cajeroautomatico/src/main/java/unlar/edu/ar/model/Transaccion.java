@@ -8,6 +8,15 @@ public class Transaccion {
     private double monto;
     private LocalDateTime fechaHora;
     private String descripcion;
+    private double saldoResultado;
+
+    public double getSaldoResultado() {
+        return saldoResultado;
+    }
+
+    public void setSaldoResultado(double saldoResultado) {
+        this.saldoResultado = saldoResultado;
+    }
 
     public TipoTransaccion getTipo() {
         return tipo;
@@ -56,7 +65,20 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        return tipo + " - " + monto + " - " + fechaHora + " - " + descripcion;
+        String tipoStr = (tipo != null) ? tipo.name() : descripcion;
+        return String.format("[%s] %s: $%.2f | Saldo: $%.2f",
+                fechaHora.format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                tipoStr,
+                monto,
+                saldoResultado);
+    }
+
+    public String toString(double saldoResultado) {
+        return String.format("[%s] %s: $%.2f | Saldo: $%.2f",
+                fechaHora.format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                tipo != null ? tipo : descripcion,
+                monto,
+                saldoResultado);
     }
 
 }
